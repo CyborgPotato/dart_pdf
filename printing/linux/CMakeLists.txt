@@ -16,6 +16,7 @@ cmake_minimum_required(VERSION 3.10)
 set(PROJECT_NAME "printing")
 project(${PROJECT_NAME} LANGUAGES CXX)
 
+if(NOT DEFINED PDFIUM_URL)
 set(PDFIUM_VERSION "5200" CACHE STRING "Version of pdfium used")
 string(REPLACE "linux-" "" TARGET_ARCH ${FLUTTER_TARGET_PLATFORM})
 set(PDFIUM_ARCH ${TARGET_ARCH} CACHE STRING "Architecture of pdfium used")
@@ -24,12 +25,15 @@ if(${PDFIUM_VERSION} STREQUAL "latest")
   set(
     PDFIUM_URL
     "https://github.com/bblanchon/pdfium-binaries/releases/latest/download/pdfium-linux-${PDFIUM_ARCH}.tgz"
+    CACHE STRING "URL to Download PDFIUM from"
     )
 else()
   set(
     PDFIUM_URL
     "https://github.com/bblanchon/pdfium-binaries/releases/download/chromium/${PDFIUM_VERSION}/pdfium-linux-${PDFIUM_ARCH}.tgz"
+    CACHE STRING "URL to Download PDFIUM from"
     )
+endif()
 endif()
 
 # Download pdfium

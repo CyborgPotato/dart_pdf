@@ -23,11 +23,13 @@ if(${PDFIUM_VERSION} STREQUAL "latest")
   set(
     PDFIUM_URL
     "https://github.com/bblanchon/pdfium-binaries/releases/latest/download/pdfium-win-${PDFIUM_ARCH}.tgz"
+    CACHE STRING "URL to Download PDFIUM from"
     )
 else()
   set(
     PDFIUM_URL
     "https://github.com/bblanchon/pdfium-binaries/releases/download/chromium/${PDFIUM_VERSION}/pdfium-win-${PDFIUM_ARCH}.tgz"
+    CACHE STRING "URL to Download PDFIUM from"
     )
 endif()
 
